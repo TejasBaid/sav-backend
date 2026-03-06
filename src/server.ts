@@ -1,8 +1,10 @@
+import 'dotenv/config';
 import express from 'express';
 import cors from 'cors';
 import { initializeDB, seedDatabase } from './db';
 import authRoutes from './routes/auth';
 import analyticsRoutes from './routes/analytics';
+import aiRoutes from './routes/ai';
 
 const app = express();
 const port = process.env.PORT || 3001;
@@ -16,6 +18,7 @@ seedDatabase();
 app.use('/api/auth', authRoutes);
 app.use('/api/users', authRoutes);
 app.use('/api', analyticsRoutes);
+app.use('/api/ai', aiRoutes);
 
 app.listen(port, () => {
   console.log(`Backend server running on http://localhost:${port}`);
