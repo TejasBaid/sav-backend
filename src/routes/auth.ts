@@ -27,7 +27,7 @@ router.get('/me', authenticateToken, (req: any, res: Response) => {
   res.json({ user: req.user });
 });
 
-router.post('/users', authenticateToken, (req: any, res: Response) => {
+router.post('/', authenticateToken, (req: any, res: Response) => {
   if (req.user.role !== 'superuser') {
     return res.status(403).json({ error: 'Forbidden: Superuser access required' });
   }
